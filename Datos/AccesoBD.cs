@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
+//| || //  (( |+|========================================================
+//| ||// ((   |+| AsisT   | 05-07-2021                                   
+//| ||\\ ((   |+| Kyocode | www.kyocode.com | Gerardo Alvarez Mendoza    
+//| || \\  (( |+|========================================================
 namespace SisAsis.Datos
 {
     public class AccesoBD

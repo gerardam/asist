@@ -3,6 +3,10 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 
+//| || //  (( |+|========================================================
+//| ||// ((   |+| AsisT   | 05-07-2021                                   
+//| ||\\ ((   |+| Kyocode | www.kyocode.com | Gerardo Alvarez Mendoza    
+//| || \\  (( |+|========================================================
 namespace SisAsis.Datos
 {
     public class DCargo : AccesoBD

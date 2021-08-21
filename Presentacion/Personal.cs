@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using SisAsis.Datos;
 using SisAsis.Logica;
 
+//| || //  (( |+|========================================================
+//| ||// ((   |+| AsisT   | 05-07-2021                                   
+//| ||\\ ((   |+| Kyocode | www.kyocode.com | Gerardo Alvarez Mendoza    
+//| || \\  (( |+|========================================================
 namespace SisAsis.Presentacion
 {
     public partial class Personal : UserControl
@@ -164,6 +168,17 @@ namespace SisAsis.Presentacion
             pnlPaginado.Visible = true;
         }
 
+        private void EliminarPersonal()
+        {
+            IdPersona = Convert.ToInt32(dgvPersonal.SelectedCells[2].Value);
+            LPersonal pm = new LPersonal();
+            pm.Id_personal = IdPersona;
+            if (new DPersonal().EliminarPersonal(pm))
+            {
+                MostrarPersonal();
+            }
+        }
+
         private void InsertarCargos()
         {
             if (!string.IsNullOrEmpty(txtCargoG.Text))
@@ -278,12 +293,49 @@ namespace SisAsis.Presentacion
         {
             if (e.ColumnIndex == dgvPersonal.Columns["Eliminar"].Index)
             {
-                
+                EliminarPersonal();
             }
             if (e.ColumnIndex == dgvPersonal.Columns["Editar"].Index)
             {
-                
+                ObtenerDatosP();
             }
         }
+
+        private void ObtenerDatosP()
+        {
+            IdPersona = Convert.ToInt32(dgvPersonal.SelectedCells[2].Value);
+            Estatus = dgvPersonal.SelectedCells[8].Value.ToString();
+            if (Estatus == "ELIMINADO")
+            {
+                DialogResult result = MessageBox.Show("El registro se actualizara de estado a Eliminado, desea continuar?", "Eliminar registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if(result == DialogResult.OK)
+                    RestaurarPersonal();
+            }
+            else
+            {
+                txtNombres.Text = dgvPersonal.SelectedCells[3].Value.ToString();
+
+                txtIdentificacion.Text = dgvPersonal.SelectedCells[4].Value.ToString();
+                cbxPais.Text = dgvPersonal.SelectedCells[10].Value.ToString();
+                txtCargo.Text = dgvPersonal.SelectedCells[6].Value.ToString();
+                IdCargo = Convert.ToInt32(dgvPersonal.SelectedCells[7].Value.ToString());
+                txtSueldo.Text = dgvPersonal.SelectedCells[5].Value.ToString();
+                pnlPaginado.Visible = false;
+                pnlRegistro.Visible = true;
+                pnlRegistro.Dock = DockStyle.Fill;
+                dgvListadoCargos.Visible = false;
+                lblSueldoP.Visible = true;
+                pnlBtnsGuardarP.Visible = true;
+                btnGuardarP.Visible = false;
+                btnGuardarCP.Visible = true;
+                pnlCargo.Visible = false;
+            }
+        }
+
+        private void RestaurarPersonal()
+        {
+
+        }
+
     }
 }

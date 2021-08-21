@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//| || //  (( |+|========================================================
+//| ||// ((   |+| AsisT   | 05-07-2021                                   
+//| ||\\ ((   |+| Kyocode | www.kyocode.com | Gerardo Alvarez Mendoza    
+//| || \\  (( |+|========================================================
 namespace SisAsis.Presentacion
 {
     public partial class MenuPrincipal : Form
