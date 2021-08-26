@@ -40,14 +40,14 @@
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlPaginado = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblTotalPagina = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblPagina = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnPagUlt = new System.Windows.Forms.Button();
+            this.btnPagPri = new System.Windows.Forms.Button();
+            this.btnPagAnt = new System.Windows.Forms.Button();
+            this.btnPagSig = new System.Windows.Forms.Button();
             this.pnlRegistro = new System.Windows.Forms.Panel();
             this.dgvListadoCargos = new System.Windows.Forms.DataGridView();
             this.EditarC = new System.Windows.Forms.DataGridViewImageColumn();
@@ -210,30 +210,30 @@
             // pnlPaginado
             // 
             this.pnlPaginado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
-            this.pnlPaginado.Controls.Add(this.label9);
+            this.pnlPaginado.Controls.Add(this.lblTotalPagina);
             this.pnlPaginado.Controls.Add(this.label8);
-            this.pnlPaginado.Controls.Add(this.label7);
+            this.pnlPaginado.Controls.Add(this.lblPagina);
             this.pnlPaginado.Controls.Add(this.label6);
-            this.pnlPaginado.Controls.Add(this.button10);
-            this.pnlPaginado.Controls.Add(this.button9);
-            this.pnlPaginado.Controls.Add(this.button7);
-            this.pnlPaginado.Controls.Add(this.button8);
+            this.pnlPaginado.Controls.Add(this.btnPagUlt);
+            this.pnlPaginado.Controls.Add(this.btnPagPri);
+            this.pnlPaginado.Controls.Add(this.btnPagAnt);
+            this.pnlPaginado.Controls.Add(this.btnPagSig);
             this.pnlPaginado.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlPaginado.Location = new System.Drawing.Point(0, 450);
             this.pnlPaginado.Name = "pnlPaginado";
             this.pnlPaginado.Size = new System.Drawing.Size(700, 50);
             this.pnlPaginado.TabIndex = 2;
             // 
-            // label9
+            // lblTotalPagina
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(418, 19);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(14, 13);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "0";
+            this.lblTotalPagina.AutoSize = true;
+            this.lblTotalPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPagina.ForeColor = System.Drawing.Color.White;
+            this.lblTotalPagina.Location = new System.Drawing.Point(418, 19);
+            this.lblTotalPagina.Name = "lblTotalPagina";
+            this.lblTotalPagina.Size = new System.Drawing.Size(14, 13);
+            this.lblTotalPagina.TabIndex = 7;
+            this.lblTotalPagina.Text = "0";
             // 
             // label8
             // 
@@ -245,16 +245,16 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "de";
             // 
-            // label7
+            // lblPagina
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(363, 19);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(14, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "0";
+            this.lblPagina.AutoSize = true;
+            this.lblPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPagina.ForeColor = System.Drawing.Color.White;
+            this.lblPagina.Location = new System.Drawing.Point(363, 19);
+            this.lblPagina.Name = "lblPagina";
+            this.lblPagina.Size = new System.Drawing.Size(14, 13);
+            this.lblPagina.TabIndex = 5;
+            this.lblPagina.Text = "0";
             // 
             // label6
             // 
@@ -266,57 +266,61 @@
             this.label6.TabIndex = 4;
             this.label6.Text = "Pagina";
             // 
-            // button10
+            // btnPagUlt
             // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(248)))), ((int)(((byte)(240)))));
-            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Location = new System.Drawing.Point(241, 10);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(70, 30);
-            this.button10.TabIndex = 3;
-            this.button10.Text = "Ultima";
-            this.button10.UseVisualStyleBackColor = false;
+            this.btnPagUlt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(248)))), ((int)(((byte)(240)))));
+            this.btnPagUlt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPagUlt.FlatAppearance.BorderSize = 0;
+            this.btnPagUlt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagUlt.Location = new System.Drawing.Point(241, 10);
+            this.btnPagUlt.Name = "btnPagUlt";
+            this.btnPagUlt.Size = new System.Drawing.Size(70, 30);
+            this.btnPagUlt.TabIndex = 3;
+            this.btnPagUlt.Text = "Ultima";
+            this.btnPagUlt.UseVisualStyleBackColor = false;
+            this.btnPagUlt.Click += new System.EventHandler(this.btnPagUlt_Click);
             // 
-            // button9
+            // btnPagPri
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(248)))), ((int)(((byte)(240)))));
-            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(13, 10);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(70, 30);
-            this.button9.TabIndex = 2;
-            this.button9.Text = "Primera";
-            this.button9.UseVisualStyleBackColor = false;
+            this.btnPagPri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(248)))), ((int)(((byte)(240)))));
+            this.btnPagPri.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPagPri.FlatAppearance.BorderSize = 0;
+            this.btnPagPri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagPri.Location = new System.Drawing.Point(13, 10);
+            this.btnPagPri.Name = "btnPagPri";
+            this.btnPagPri.Size = new System.Drawing.Size(70, 30);
+            this.btnPagPri.TabIndex = 2;
+            this.btnPagPri.Text = "Primera";
+            this.btnPagPri.UseVisualStyleBackColor = false;
+            this.btnPagPri.Click += new System.EventHandler(this.btnPagPri_Click);
             // 
-            // button7
+            // btnPagAnt
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(248)))), ((int)(((byte)(240)))));
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(89, 10);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(70, 30);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "Anterior";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnPagAnt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(248)))), ((int)(((byte)(240)))));
+            this.btnPagAnt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPagAnt.FlatAppearance.BorderSize = 0;
+            this.btnPagAnt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagAnt.Location = new System.Drawing.Point(89, 10);
+            this.btnPagAnt.Name = "btnPagAnt";
+            this.btnPagAnt.Size = new System.Drawing.Size(70, 30);
+            this.btnPagAnt.TabIndex = 0;
+            this.btnPagAnt.Text = "Anterior";
+            this.btnPagAnt.UseVisualStyleBackColor = false;
+            this.btnPagAnt.Click += new System.EventHandler(this.btnPagAnt_Click);
             // 
-            // button8
+            // btnPagSig
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(248)))), ((int)(((byte)(240)))));
-            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(165, 10);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(70, 30);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "Siguiente";
-            this.button8.UseVisualStyleBackColor = false;
+            this.btnPagSig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(248)))), ((int)(((byte)(240)))));
+            this.btnPagSig.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPagSig.FlatAppearance.BorderSize = 0;
+            this.btnPagSig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagSig.Location = new System.Drawing.Point(165, 10);
+            this.btnPagSig.Name = "btnPagSig";
+            this.btnPagSig.Size = new System.Drawing.Size(70, 30);
+            this.btnPagSig.TabIndex = 1;
+            this.btnPagSig.Text = "Siguiente";
+            this.btnPagSig.UseVisualStyleBackColor = false;
+            this.btnPagSig.Click += new System.EventHandler(this.btnPagSig_Click);
             // 
             // pnlRegistro
             // 
@@ -771,14 +775,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblTotalPagina;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblPagina;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnPagUlt;
+        private System.Windows.Forms.Button btnPagPri;
+        private System.Windows.Forms.Button btnPagAnt;
+        private System.Windows.Forms.Button btnPagSig;
         private System.Windows.Forms.Panel pnlCargo;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Button btnGuardarCC;

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 //| || //  (( |+|========================================================
@@ -57,9 +58,55 @@ namespace SisAsis.Datos
                 da.SelectCommand.Parameters.Add(parameter);
             }
             da.Fill(dt);
+            CerrarCon();
 
             return dt;
         }
+
+        protected int EjecutarIntSP(string nombreSP, IDataParameter[] arrParametros)
+        {
+            AbrirCon();
+            SqlCommand command = new SqlCommand(nombreSP, cnn);
+            command.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter parameter in arrParametros)
+            {
+                command.Parameters.Add(parameter);
+            }
+
+            int result;
+            if (command.ExecuteScalar() != null)
+            {
+                result = Convert.ToInt32(command.ExecuteScalar());
+            }
+            else
+            {
+                result = 0;
+            }
+            CerrarCon();
+
+            return result;
+        }
+
+        protected string EjecutarStringSP(string nombreSP, IDataParameter[] arrParametros)
+        {
+            AbrirCon();
+            SqlCommand command = new SqlCommand(nombreSP, cnn);
+            command.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter parameter in arrParametros)
+            {
+                command.Parameters.Add(parameter);
+            }
+
+            string result = Convert.ToString(command.ExecuteScalar());
+            if (String.IsNullOrEmpty(result.Trim()))
+            {
+                return String.Empty;
+            }
+            CerrarCon();
+
+            return result;
+        }
+
         #endregion
     }
 }

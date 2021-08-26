@@ -38,6 +38,7 @@ namespace SisAsis.Presentacion
         private void Personal_Load(object sender, EventArgs e)
         {
             MostrarPersonal();
+            ReiniciarPaginado();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -160,6 +161,72 @@ namespace SisAsis.Presentacion
             {
                 ObtenerDatosCargo();
             }
+        }
+
+        private void btnPagPri_Click(object sender, EventArgs e)
+        {
+            ReiniciarPaginado();
+            MostrarPersonal();
+        }
+
+        private void btnPagAnt_Click(object sender, EventArgs e)
+        {
+            Desde -= 10;
+            Hasta -= 10;
+            MostrarPersonal();
+            ContarPersonal();
+            if (Contador > Hasta)
+            {
+                btnPagSig.Enabled = true;
+                btnPagAnt.Enabled = true;
+            }
+            else
+            {
+                btnPagSig.Enabled = false;
+                btnPagAnt.Enabled = true;
+            }
+            if (Desde == 1)
+            {
+                ReiniciarPaginado();
+            }
+        }
+
+        private void btnPagSig_Click(object sender, EventArgs e)
+        {
+            Desde += 10;
+            Hasta += 10;
+            MostrarPersonal();
+            ContarPersonal();
+            if (Contador > Hasta)
+            {
+                btnPagSig.Enabled = true;
+                btnPagAnt.Enabled = true;
+            }
+            else
+            {
+                btnPagSig.Enabled = false;
+                btnPagAnt.Enabled = true;
+            }
+            Paginar();
+        }
+
+        private void btnPagUlt_Click(object sender, EventArgs e)
+        {
+            Hasta = TotalPag * ItemPorPag;
+            Desde = Hasta - 9;
+            MostrarPersonal();
+            ContarPersonal();
+            if (Contador > Hasta)
+            {
+                btnPagSig.Enabled = true;
+                btnPagAnt.Enabled = true;
+            }
+            else
+            {
+                btnPagSig.Enabled = false;
+                btnPagAnt.Enabled = true;
+            }
+            Paginar();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -287,6 +354,11 @@ namespace SisAsis.Presentacion
             }
         }
 
+        private void ContarPersonal()
+        {
+            Contador = new DPersonal().ObtenerTotalPersonal();
+        }
+
         private void InsertarCargos()
         {
             if (!string.IsNullOrEmpty(txtCargoG.Text))
@@ -385,6 +457,42 @@ namespace SisAsis.Presentacion
             pnlCargo.BringToFront();
         }
 
+        private void ReiniciarPaginado()
+        {
+            Desde = 1;
+            Hasta = 10;
+            ContarPersonal();
+            if (Contador > Hasta)
+            {
+                btnPagSig.Enabled = true;
+                btnPagAnt.Enabled = false;
+                btnPagUlt.Enabled = true;
+                btnPagPri.Enabled = true;
+            }
+            else
+            {
+                btnPagSig.Enabled = false;
+                btnPagAnt.Enabled = false;
+                btnPagUlt.Enabled = false;
+                btnPagPri.Enabled = false;
+            }
+            Paginar();
+        }
+
+        private void Paginar()
+        {
+            try
+            {
+                lblPagina.Text = (Hasta / ItemPorPag).ToString();
+                lblTotalPagina.Text = Math.Ceiling(Convert.ToSingle(Contador) / ItemPorPag).ToString();
+                TotalPag = Convert.ToInt32(lblTotalPagina.Text);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         private void Limpiar()
         {
             txtNombres.Clear();
@@ -393,10 +501,6 @@ namespace SisAsis.Presentacion
             txtSueldo.Clear();
             BuscarCargos();
         }
-
-
-
-
 
 
         #endregion

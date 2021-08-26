@@ -23,6 +23,7 @@ namespace SisAsis.Datos
             EliminarPersonal = 4,
             BuscarPersonal = 5,
             RestaurarPersonal = 6,
+            ObtenerTotalPersonal = 7
         }
         #endregion
 
@@ -157,6 +158,24 @@ namespace SisAsis.Datos
             catch (Exception ex)
             {
                 return false;
+            }
+        }
+
+        public int ObtenerTotalPersonal()
+        {
+            try
+            {
+                SqlParameter[] parametros =
+                {
+                    new SqlParameter("@OpcionSP",       SqlDbType.TinyInt)
+                };
+                parametros[0].Value = SPOpcion.ObtenerTotalPersonal;
+
+                return EjecutarIntSP("PERSONAL_SP", parametros);
+            }
+            catch (Exception ex)
+            {
+                return -1;
             }
         }
     }
