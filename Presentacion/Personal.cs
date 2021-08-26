@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using SisAsis.Datos;
+﻿using SisAsis.Datos;
 using SisAsis.Logica;
+using System;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 
 //| || //  (( |+|========================================================
 //| ||// ((   |+| AsisT   | 05-07-2021                                   
@@ -41,6 +36,23 @@ namespace SisAsis.Presentacion
             ReiniciarPaginado();
         }
 
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
+        {
+            DataTable dtDatos = new DPersonal().BuscarPersonal(Desde, Hasta, txtBuscador.Text);
+            dgvPersonal.DataSource = dtDatos;
+            Bases.DisenhoDgv(ref dgvPersonal);
+            Bases.DiseñoDtvEliminar(ref dgvPersonal);
+            dgvPersonal.Columns[2].Visible = false;
+            dgvPersonal.Columns[7].Visible = false;
+            pnlPaginado.Visible = true;
+        }
+
+        private void btnMostrarTodo_Click(object sender, EventArgs e)
+        {
+            ReiniciarPaginado();
+            MostrarPersonal();
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             LocalizarDgvCargo();
@@ -51,6 +63,16 @@ namespace SisAsis.Presentacion
             btnGuardarP.Visible = true;
             btnGuardarCP.Visible = false;
             Limpiar();
+        }
+
+        private void txtCargo_TextChanged(object sender, EventArgs e)
+        {
+            BuscarCargos();
+        }
+
+        private void txtSueldo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Bases.Decimales(txtSueldo, e);
         }
 
         private void btnGuardarP_Click(object sender, EventArgs e)
@@ -96,11 +118,7 @@ namespace SisAsis.Presentacion
         private void btnVolverP_Click(object sender, EventArgs e)
         {
             pnlRegistro.Visible = false;
-        }
-
-        private void txtSueldo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Bases.Decimales(txtSueldo, e);
+            pnlPaginado.Visible = true;
         }
 
         private void btnAgregarCargo_Click(object sender, EventArgs e)
@@ -112,6 +130,11 @@ namespace SisAsis.Presentacion
             btnGuardarCC.Visible = false;
             txtCargoG.Clear();
             txtSueldoG.Clear();
+        }
+
+        private void txtSueldoG_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Bases.Decimales(txtSueldoG, e);
         }
 
         private void btnGuardarC_Click(object sender, EventArgs e)
@@ -127,16 +150,6 @@ namespace SisAsis.Presentacion
         private void btnVolverC_Click(object sender, EventArgs e)
         {
             pnlCargo.Visible = false;
-        }
-
-        private void txtCargo_TextChanged(object sender, EventArgs e)
-        {
-            BuscarCargos();
-        }
-
-        private void txtSueldoG_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Bases.Decimales(txtSueldoG, e);
         }
 
         private void dgvPersonal_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -243,6 +256,7 @@ namespace SisAsis.Presentacion
         #endregion
 
         #region FUNCIONES
+
         private void InsertarPersonal()
         {
             LPersonal pm = new LPersonal();
@@ -305,7 +319,6 @@ namespace SisAsis.Presentacion
             DialogResult result = MessageBox.Show("Este personal se elimino, desea habilitarlo?", "Restaurar registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
-                //HabilitarPersonal();
                 LPersonal pm = new LPersonal();
                 pm.Id_personal = IdPersona;
                 if (new DPersonal().RestaurarPersonal(pm))
@@ -314,16 +327,6 @@ namespace SisAsis.Presentacion
                 }
             }
         }
-
-        //private void HabilitarPersonal()
-        //{
-        //    LPersonal pm = new LPersonal();
-        //    pm.Id_personal = IdPersona;
-        //    if (new DPersonal().RestaurarPersonal(pm))
-        //    {
-        //        MostrarPersonal();
-        //    }
-        //}
 
         private void ObtenerDatosP()
         {
@@ -502,9 +505,6 @@ namespace SisAsis.Presentacion
             BuscarCargos();
         }
 
-
         #endregion
-
-        
     }
 }
