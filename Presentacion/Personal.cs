@@ -74,7 +74,22 @@ namespace SisAsis.Presentacion
 
         private void btnGuardarCP_Click(object sender, EventArgs e)
         {
-
+            if (!string.IsNullOrEmpty(txtNombres.Text))
+            {
+                if (!string.IsNullOrEmpty(txtIdentificacion.Text))
+                {
+                    if (!string.IsNullOrEmpty(cbxPais.Text))
+                    {
+                        if (IdCargo > 0)
+                        {
+                            if (!string.IsNullOrEmpty(txtSueldo.Text))
+                            {
+                                EditarPersonal();
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void btnVolverP_Click(object sender, EventArgs e)
@@ -178,7 +193,18 @@ namespace SisAsis.Presentacion
 
         private void EditarPersonal()
         {
-
+            LPersonal pm = new LPersonal();
+            pm.Id_personal = IdPersona;
+            pm.Nombres = txtNombres.Text;
+            pm.Identificacion = txtIdentificacion.Text;
+            pm.Pais = cbxPais.Text;
+            pm.Id_cargo = IdCargo;
+            pm.SueldoPorHora = Convert.ToDouble(txtSueldo.Text);
+            if (new DPersonal().EditarPersonal(pm))
+            {
+                MostrarPersonal();
+                pnlRegistro.Visible = false;
+            }
         }
 
         private void MostrarPersonal()
@@ -242,6 +268,7 @@ namespace SisAsis.Presentacion
             }
             else
             {
+                LocalizarDgvCargo();
                 txtNombres.Text = dgvPersonal.SelectedCells[3].Value.ToString();
                 txtIdentificacion.Text = dgvPersonal.SelectedCells[4].Value.ToString();
                 cbxPais.Text = dgvPersonal.SelectedCells[10].Value.ToString();
