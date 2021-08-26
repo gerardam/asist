@@ -123,16 +123,39 @@ namespace SisAsis.Presentacion
             Bases.Decimales(txtSueldoG, e);
         }
 
+        private void dgvPersonal_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvPersonal.Columns["Eliminar"].Index)
+            {
+                EliminarPersonal();
+            }
+            else if (e.ColumnIndex == dgvPersonal.Columns["Editar"].Index)
+            {
+                ObtenerDatosP();
+            }
+        }
+
         private void dgvListadoCargos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvListadoCargos.Columns["EditarC"].Index)
             {
                 ObtenerCargosEditar();
             }
-            if (e.ColumnIndex == dgvListadoCargos.Columns["Cargo"].Index)
+            else if (e.ColumnIndex == dgvListadoCargos.Columns["Cargo"].Index)
             {
                 ObtenerDatosCargo();
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Bases.DisenhoDgv(ref dgvPersonal);
+            Bases.DiseñoDtvEliminar(ref dgvPersonal);
+            dgvPersonal.Columns[2].Visible = false;
+            dgvPersonal.Columns[7].Visible = false;
+            pnlPaginado.Visible = true;
+
+            timer1.Stop();
         }
 
         #endregion
@@ -163,6 +186,7 @@ namespace SisAsis.Presentacion
             DataTable dtDatos = new DPersonal().MostrarPersonal(Desde, Hasta);
             dgvPersonal.DataSource = dtDatos;
             Bases.DisenhoDgv(ref dgvPersonal);
+            Bases.DiseñoDtvEliminar(ref dgvPersonal);
             dgvPersonal.Columns[2].Visible = false;
             dgvPersonal.Columns[7].Visible = false;
             pnlPaginado.Visible = true;
@@ -170,12 +194,69 @@ namespace SisAsis.Presentacion
 
         private void EliminarPersonal()
         {
-            IdPersona = Convert.ToInt32(dgvPersonal.SelectedCells[2].Value);
-            LPersonal pm = new LPersonal();
-            pm.Id_personal = IdPersona;
-            if (new DPersonal().EliminarPersonal(pm))
+            DialogResult result = MessageBox.Show("El registro se actualizara de estado a Eliminado, desea continuar?", "Eliminar registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
             {
-                MostrarPersonal();
+                IdPersona = Convert.ToInt32(dgvPersonal.SelectedCells[2].Value);
+                LPersonal pm = new LPersonal();
+                pm.Id_personal = IdPersona;
+                if (new DPersonal().EliminarPersonal(pm))
+                {
+                    MostrarPersonal();
+                }
+            }
+        }
+
+        private void RestaurarPersonal()
+        {
+            DialogResult result = MessageBox.Show("Este personal se elimino, desea habilitarlo?", "Restaurar registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                //HabilitarPersonal();
+                LPersonal pm = new LPersonal();
+                pm.Id_personal = IdPersona;
+                if (new DPersonal().RestaurarPersonal(pm))
+                {
+                    MostrarPersonal();
+                }
+            }
+        }
+
+        //private void HabilitarPersonal()
+        //{
+        //    LPersonal pm = new LPersonal();
+        //    pm.Id_personal = IdPersona;
+        //    if (new DPersonal().RestaurarPersonal(pm))
+        //    {
+        //        MostrarPersonal();
+        //    }
+        //}
+
+        private void ObtenerDatosP()
+        {
+            IdPersona = Convert.ToInt32(dgvPersonal.SelectedCells[2].Value);
+            Estatus = dgvPersonal.SelectedCells[8].Value.ToString();
+            if (Estatus == "ELIMINADO")
+            {
+                RestaurarPersonal();
+            }
+            else
+            {
+                txtNombres.Text = dgvPersonal.SelectedCells[3].Value.ToString();
+                txtIdentificacion.Text = dgvPersonal.SelectedCells[4].Value.ToString();
+                cbxPais.Text = dgvPersonal.SelectedCells[10].Value.ToString();
+                txtCargo.Text = dgvPersonal.SelectedCells[6].Value.ToString();
+                IdCargo = Convert.ToInt32(dgvPersonal.SelectedCells[7].Value.ToString());
+                txtSueldo.Text = dgvPersonal.SelectedCells[5].Value.ToString();
+                pnlPaginado.Visible = false;
+                pnlRegistro.Visible = true;
+                pnlRegistro.Dock = DockStyle.Fill;
+                dgvListadoCargos.Visible = false;
+                lblSueldoP.Visible = true;
+                pnlBtnsGuardarP.Visible = true;
+                btnGuardarP.Visible = false;
+                btnGuardarCP.Visible = true;
+                pnlCargo.Visible = false;
             }
         }
 
@@ -287,55 +368,12 @@ namespace SisAsis.Presentacion
         }
 
 
+
+
+
+
         #endregion
 
-        private void dgvPersonal_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvPersonal.Columns["Eliminar"].Index)
-            {
-                EliminarPersonal();
-            }
-            if (e.ColumnIndex == dgvPersonal.Columns["Editar"].Index)
-            {
-                ObtenerDatosP();
-            }
-        }
-
-        private void ObtenerDatosP()
-        {
-            IdPersona = Convert.ToInt32(dgvPersonal.SelectedCells[2].Value);
-            Estatus = dgvPersonal.SelectedCells[8].Value.ToString();
-            if (Estatus == "ELIMINADO")
-            {
-                DialogResult result = MessageBox.Show("El registro se actualizara de estado a Eliminado, desea continuar?", "Eliminar registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if(result == DialogResult.OK)
-                    RestaurarPersonal();
-            }
-            else
-            {
-                txtNombres.Text = dgvPersonal.SelectedCells[3].Value.ToString();
-
-                txtIdentificacion.Text = dgvPersonal.SelectedCells[4].Value.ToString();
-                cbxPais.Text = dgvPersonal.SelectedCells[10].Value.ToString();
-                txtCargo.Text = dgvPersonal.SelectedCells[6].Value.ToString();
-                IdCargo = Convert.ToInt32(dgvPersonal.SelectedCells[7].Value.ToString());
-                txtSueldo.Text = dgvPersonal.SelectedCells[5].Value.ToString();
-                pnlPaginado.Visible = false;
-                pnlRegistro.Visible = true;
-                pnlRegistro.Dock = DockStyle.Fill;
-                dgvListadoCargos.Visible = false;
-                lblSueldoP.Visible = true;
-                pnlBtnsGuardarP.Visible = true;
-                btnGuardarP.Visible = false;
-                btnGuardarCP.Visible = true;
-                pnlCargo.Visible = false;
-            }
-        }
-
-        private void RestaurarPersonal()
-        {
-
-        }
-
+        
     }
 }

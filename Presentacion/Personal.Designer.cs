@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Personal));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
@@ -36,6 +37,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgvPersonal = new System.Windows.Forms.DataGridView();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlPaginado = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -50,8 +53,9 @@
             this.EditarC = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlCargo = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.btnGuardarCC = new System.Windows.Forms.Button();
+            this.btnVolverC = new System.Windows.Forms.Button();
             this.btnGuardarC = new System.Windows.Forms.Button();
+            this.btnGuardarCC = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.txtSueldoG = new System.Windows.Forms.TextBox();
@@ -77,9 +81,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnVolverC = new System.Windows.Forms.Button();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonal)).BeginInit();
@@ -188,6 +190,22 @@
             this.dgvPersonal.Size = new System.Drawing.Size(700, 400);
             this.dgvPersonal.TabIndex = 1;
             this.dgvPersonal.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonal_CellClick);
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "";
+            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "";
+            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
             // 
             // pnlPaginado
             // 
@@ -353,6 +371,7 @@
             this.EditarC.Image = ((System.Drawing.Image)(resources.GetObject("EditarC.Image")));
             this.EditarC.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.EditarC.Name = "EditarC";
+            this.EditarC.ReadOnly = true;
             // 
             // pnlCargo
             // 
@@ -378,20 +397,20 @@
             this.panel13.Size = new System.Drawing.Size(190, 45);
             this.panel13.TabIndex = 13;
             // 
-            // btnGuardarCC
+            // btnVolverC
             // 
-            this.btnGuardarCC.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGuardarCC.BackgroundImage")));
-            this.btnGuardarCC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnGuardarCC.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardarCC.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnGuardarCC.FlatAppearance.BorderSize = 0;
-            this.btnGuardarCC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarCC.Location = new System.Drawing.Point(150, 0);
-            this.btnGuardarCC.Name = "btnGuardarCC";
-            this.btnGuardarCC.Size = new System.Drawing.Size(40, 45);
-            this.btnGuardarCC.TabIndex = 1;
-            this.btnGuardarCC.UseVisualStyleBackColor = true;
-            this.btnGuardarCC.Click += new System.EventHandler(this.btnGuardarCC_Click);
+            this.btnVolverC.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVolverC.BackgroundImage")));
+            this.btnVolverC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVolverC.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVolverC.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnVolverC.FlatAppearance.BorderSize = 0;
+            this.btnVolverC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolverC.Location = new System.Drawing.Point(0, 0);
+            this.btnVolverC.Name = "btnVolverC";
+            this.btnVolverC.Size = new System.Drawing.Size(40, 45);
+            this.btnVolverC.TabIndex = 11;
+            this.btnVolverC.UseVisualStyleBackColor = true;
+            this.btnVolverC.Click += new System.EventHandler(this.btnVolverC_Click);
             // 
             // btnGuardarC
             // 
@@ -407,6 +426,21 @@
             this.btnGuardarC.TabIndex = 0;
             this.btnGuardarC.UseVisualStyleBackColor = true;
             this.btnGuardarC.Click += new System.EventHandler(this.btnGuardarC_Click);
+            // 
+            // btnGuardarCC
+            // 
+            this.btnGuardarCC.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGuardarCC.BackgroundImage")));
+            this.btnGuardarCC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnGuardarCC.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardarCC.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnGuardarCC.FlatAppearance.BorderSize = 0;
+            this.btnGuardarCC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarCC.Location = new System.Drawing.Point(150, 0);
+            this.btnGuardarCC.Name = "btnGuardarCC";
+            this.btnGuardarCC.Size = new System.Drawing.Size(40, 45);
+            this.btnGuardarCC.TabIndex = 1;
+            this.btnGuardarCC.UseVisualStyleBackColor = true;
+            this.btnGuardarCC.Click += new System.EventHandler(this.btnGuardarCC_Click);
             // 
             // panel11
             // 
@@ -692,34 +726,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombres y apellidos:";
             // 
-            // btnVolverC
+            // timer1
             // 
-            this.btnVolverC.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVolverC.BackgroundImage")));
-            this.btnVolverC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnVolverC.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVolverC.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnVolverC.FlatAppearance.BorderSize = 0;
-            this.btnVolverC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolverC.Location = new System.Drawing.Point(0, 0);
-            this.btnVolverC.Name = "btnVolverC";
-            this.btnVolverC.Size = new System.Drawing.Size(40, 45);
-            this.btnVolverC.TabIndex = 11;
-            this.btnVolverC.UseVisualStyleBackColor = true;
-            this.btnVolverC.Click += new System.EventHandler(this.btnVolverC_Click);
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "";
-            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Personal
             // 
@@ -802,5 +812,6 @@
         private System.Windows.Forms.Button btnVolverC;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.Timer timer1;
     }
 }

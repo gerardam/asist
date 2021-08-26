@@ -22,6 +22,7 @@ namespace SisAsis.Datos
             EditarPersonal = 3,
             EliminarPersonal = 4,
             BuscarPersonal = 5,
+            RestaurarPersonal = 6,
         }
         #endregion
 
@@ -136,6 +137,27 @@ namespace SisAsis.Datos
             parametros[3].Value = buscador;
 
             return EjecutarDTSP("PERSONAL_SP", parametros);
+        }
+
+        public bool RestaurarPersonal(LPersonal pm)
+        {
+            try
+            {
+                SqlParameter[] parametros =
+                {
+                    new SqlParameter("@OpcionSP",       SqlDbType.TinyInt),
+                    new SqlParameter("@Id_personal",    SqlDbType.Int),
+                };
+                parametros[0].Value = SPOpcion.RestaurarPersonal;
+                parametros[1].Value = pm.Id_personal;
+
+                EjecutarSP("PERSONAL_SP", parametros);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
