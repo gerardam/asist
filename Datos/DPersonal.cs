@@ -23,7 +23,8 @@ namespace SisAsis.Datos
             EliminarPersonal = 4,
             BuscarPersonal = 5,
             RestaurarPersonal = 6,
-            ObtenerTotalPersonal = 7
+            ObtenerTotalPersonal = 7,
+            BuscarPersonalIdentidad = 8
         }
         #endregion
 
@@ -177,6 +178,19 @@ namespace SisAsis.Datos
             {
                 return -1;
             }
+        }
+
+        public DataTable BuscarPersonalIdentidad(string buscador)
+        {
+            SqlParameter[] parametros =
+            {
+                new SqlParameter("@OpcionSP",   SqlDbType.TinyInt),
+                new SqlParameter("@Buscador",   SqlDbType.VarChar),
+            };
+            parametros[0].Value = SPOpcion.BuscarPersonalIdentidad;
+            parametros[1].Value = buscador;
+
+            return EjecutarDTSP("PERSONAL_SP", parametros);
         }
     }
 }

@@ -37,7 +37,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.pnlRegistro = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -49,16 +49,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.txtIdentificacion = new System.Windows.Forms.TextBox();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.pnlObservacion = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.rtbObservacion = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.timerHora = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.pnlRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel8.SuspendLayout();
+            this.pnlObservacion.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -136,23 +136,23 @@
             this.label1.Text = "AsisT";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel6
+            // pnlRegistro
             // 
-            this.panel6.Controls.Add(this.label2);
-            this.panel6.Controls.Add(this.pictureBox1);
-            this.panel6.Controls.Add(this.lblNombre);
-            this.panel6.Controls.Add(this.lblAviso);
-            this.panel6.Controls.Add(this.lblHora);
-            this.panel6.Controls.Add(this.lblFecha);
-            this.panel6.Controls.Add(this.label5);
-            this.panel6.Controls.Add(this.label4);
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Controls.Add(this.panel7);
-            this.panel6.Controls.Add(this.txtIdentificacion);
-            this.panel6.Location = new System.Drawing.Point(345, 70);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(350, 450);
-            this.panel6.TabIndex = 1;
+            this.pnlRegistro.Controls.Add(this.label2);
+            this.pnlRegistro.Controls.Add(this.pictureBox1);
+            this.pnlRegistro.Controls.Add(this.lblNombre);
+            this.pnlRegistro.Controls.Add(this.lblAviso);
+            this.pnlRegistro.Controls.Add(this.lblHora);
+            this.pnlRegistro.Controls.Add(this.lblFecha);
+            this.pnlRegistro.Controls.Add(this.label5);
+            this.pnlRegistro.Controls.Add(this.label4);
+            this.pnlRegistro.Controls.Add(this.label3);
+            this.pnlRegistro.Controls.Add(this.panel7);
+            this.pnlRegistro.Controls.Add(this.txtIdentificacion);
+            this.pnlRegistro.Location = new System.Drawing.Point(225, 70);
+            this.pnlRegistro.Name = "pnlRegistro";
+            this.pnlRegistro.Size = new System.Drawing.Size(350, 450);
+            this.pnlRegistro.TabIndex = 1;
             // 
             // label2
             // 
@@ -274,30 +274,33 @@
             this.txtIdentificacion.TabIndex = 2;
             this.txtIdentificacion.TextChanged += new System.EventHandler(this.txtIdentificacion_TextChanged);
             // 
-            // panel8
+            // pnlObservacion
             // 
-            this.panel8.Controls.Add(this.button1);
-            this.panel8.Controls.Add(this.rtbObservacion);
-            this.panel8.Controls.Add(this.label6);
-            this.panel8.Location = new System.Drawing.Point(40, 125);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(200, 300);
-            this.panel8.TabIndex = 2;
+            this.pnlObservacion.Controls.Add(this.button1);
+            this.pnlObservacion.Controls.Add(this.rtbObservacion);
+            this.pnlObservacion.Controls.Add(this.label6);
+            this.pnlObservacion.Location = new System.Drawing.Point(40, 125);
+            this.pnlObservacion.Name = "pnlObservacion";
+            this.pnlObservacion.Size = new System.Drawing.Size(200, 300);
+            this.pnlObservacion.TabIndex = 2;
+            this.pnlObservacion.Visible = false;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.Location = new System.Drawing.Point(3, 181);
+            this.button1.Location = new System.Drawing.Point(0, 175);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 23);
+            this.button1.Size = new System.Drawing.Size(200, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "Confirmar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // rtbObservacion
             // 
@@ -331,18 +334,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.ClientSize = new System.Drawing.Size(800, 561);
-            this.Controls.Add(this.panel8);
-            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.pnlObservacion);
+            this.Controls.Add(this.pnlRegistro);
             this.Controls.Add(this.panel1);
             this.Name = "TomarAsistencia";
             this.Text = "Tomar asistencia";
             this.Load += new System.EventHandler(this.TomarAsistencia_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.pnlRegistro.ResumeLayout(false);
+            this.pnlRegistro.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel8.ResumeLayout(false);
+            this.pnlObservacion.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -356,7 +359,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel pnlRegistro;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblAviso;
@@ -368,7 +371,7 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TextBox txtIdentificacion;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel pnlObservacion;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RichTextBox rtbObservacion;
         private System.Windows.Forms.Label label6;
