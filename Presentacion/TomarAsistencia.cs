@@ -88,7 +88,7 @@ namespace SisAsis.Presentacion
             pm.Estado = "ENTRADA";
             pm.Horas = 0;
             pm.Observaciones = rtbObservacion.Text;
-            if(new DAsistencia().InsertarAsistencia(pm))
+            if (new DAsistencia().InsertarAsistencia(pm))
             {
                 lblAviso.Text = "ENTRADA REGISTRADA";
                 txtIdentificacion.Clear();
@@ -132,7 +132,5 @@ namespace SisAsis.Presentacion
             }
         }
         #endregion
-
-        
     }
 }

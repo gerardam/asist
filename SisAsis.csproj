@@ -68,6 +68,12 @@
     <Compile Include="Logica\LAsistencia.cs" />
     <Compile Include="Logica\LCargo.cs" />
     <Compile Include="Logica\LPersonal.cs" />
+    <Compile Include="Presentacion\CtlUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Presentacion\CtlUsuario.Designer.cs">
+      <DependentUpon>CtlUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentacion\CtlUsuario.resx">
+      <DependentUpon>CtlUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +135,33 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imagen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
