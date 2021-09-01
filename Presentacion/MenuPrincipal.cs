@@ -33,5 +33,13 @@ namespace SisAsis.Presentacion
             control.Dock = DockStyle.Fill;
             pnlBody.Controls.Add(control);
         }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            pnlBody.Controls.Clear();
+            CtlUsuario control = new CtlUsuario();
+            control.Dock = DockStyle.Fill;
+            pnlBody.Controls.Add(control);
+        }
     }
 }

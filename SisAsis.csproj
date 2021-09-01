@@ -63,10 +63,12 @@
     <Compile Include="Datos\AccesoBD.cs" />
     <Compile Include="Datos\DAsistencia.cs" />
     <Compile Include="Datos\DCargo.cs" />
+    <Compile Include="Datos\DModulo.cs" />
     <Compile Include="Datos\DPersonal.cs" />
     <Compile Include="Logica\Bases.cs" />
     <Compile Include="Logica\LAsistencia.cs" />
     <Compile Include="Logica\LCargo.cs" />
+    <Compile Include="Logica\LModulo.cs" />
     <Compile Include="Logica\LPersonal.cs" />
     <Compile Include="Presentacion\CtlUsuario.cs">
       <SubType>UserControl</SubType>
