@@ -57,7 +57,7 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pbAgregaIconPC = new System.Windows.Forms.PictureBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblAnuncioIcono = new System.Windows.Forms.Label();
@@ -83,6 +83,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ofdIcono = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonal)).BeginInit();
@@ -98,7 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAgregaIconPC)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).BeginInit();
             this.flpBotones.SuspendLayout();
@@ -362,7 +363,7 @@
             this.flowLayoutPanel2.Controls.Add(this.pictureBox7);
             this.flowLayoutPanel2.Controls.Add(this.pictureBox9);
             this.flowLayoutPanel2.Controls.Add(this.pictureBox8);
-            this.flowLayoutPanel2.Controls.Add(this.pictureBox11);
+            this.flowLayoutPanel2.Controls.Add(this.pbAgregaIconPC);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 25);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -378,6 +379,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox4
             // 
@@ -388,6 +390,7 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 1;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // pictureBox10
             // 
@@ -398,6 +401,7 @@
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox10.TabIndex = 7;
             this.pictureBox10.TabStop = false;
+            this.pictureBox10.Click += new System.EventHandler(this.pictureBox10_Click);
             // 
             // pictureBox5
             // 
@@ -408,6 +412,7 @@
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 2;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // pictureBox6
             // 
@@ -418,6 +423,7 @@
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 3;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // pictureBox7
             // 
@@ -428,6 +434,7 @@
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 4;
             this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
             // pictureBox9
             // 
@@ -438,6 +445,7 @@
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox9.TabIndex = 6;
             this.pictureBox9.TabStop = false;
+            this.pictureBox9.Click += new System.EventHandler(this.pictureBox9_Click);
             // 
             // pictureBox8
             // 
@@ -448,16 +456,18 @@
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 5;
             this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
             // 
-            // pictureBox11
+            // pbAgregaIconPC
             // 
-            this.pictureBox11.Image = global::SisAsis.Properties.Resources.imagen;
-            this.pictureBox11.Location = new System.Drawing.Point(3, 175);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(80, 80);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox11.TabIndex = 8;
-            this.pictureBox11.TabStop = false;
+            this.pbAgregaIconPC.Image = global::SisAsis.Properties.Resources.imagen;
+            this.pbAgregaIconPC.Location = new System.Drawing.Point(3, 175);
+            this.pbAgregaIconPC.Name = "pbAgregaIconPC";
+            this.pbAgregaIconPC.Size = new System.Drawing.Size(80, 80);
+            this.pbAgregaIconPC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbAgregaIconPC.TabIndex = 8;
+            this.pbAgregaIconPC.TabStop = false;
+            this.pbAgregaIconPC.Click += new System.EventHandler(this.pbAgregaIconPC_Click);
             // 
             // panel7
             // 
@@ -482,6 +492,7 @@
             this.btnCerrar.TabIndex = 0;
             this.btnCerrar.Text = "X";
             this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblAnuncioIcono
             // 
@@ -489,10 +500,11 @@
             this.lblAnuncioIcono.ForeColor = System.Drawing.Color.Silver;
             this.lblAnuncioIcono.Location = new System.Drawing.Point(483, 16);
             this.lblAnuncioIcono.Name = "lblAnuncioIcono";
-            this.lblAnuncioIcono.Size = new System.Drawing.Size(91, 92);
+            this.lblAnuncioIcono.Size = new System.Drawing.Size(100, 100);
             this.lblAnuncioIcono.TabIndex = 17;
             this.lblAnuncioIcono.Text = "Elije un icono";
             this.lblAnuncioIcono.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAnuncioIcono.Click += new System.EventHandler(this.lblAnuncioIcono_Click);
             // 
             // pbIcono
             // 
@@ -502,6 +514,7 @@
             this.pbIcono.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbIcono.TabIndex = 16;
             this.pbIcono.TabStop = false;
+            this.pbIcono.Click += new System.EventHandler(this.pbIcono_Click);
             // 
             // flpBotones
             // 
@@ -526,6 +539,7 @@
             this.btnRegresar.TabIndex = 2;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = false;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // btnActualizar
             // 
@@ -659,6 +673,7 @@
             this.txtContrasena.Size = new System.Drawing.Size(200, 19);
             this.txtContrasena.TabIndex = 5;
             this.txtContrasena.UseSystemPasswordChar = true;
+            this.txtContrasena.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContrasena_KeyPress);
             // 
             // txtUsuario
             // 
@@ -728,6 +743,10 @@
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.ReadOnly = true;
             // 
+            // ofdIcono
+            // 
+            this.ofdIcono.FileName = "openFileDialog1";
+            // 
             // CtlUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -738,6 +757,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "CtlUsuario";
             this.Size = new System.Drawing.Size(700, 500);
+            this.Load += new System.EventHandler(this.CtlUsuario_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -756,7 +776,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAgregaIconPC)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcono)).EndInit();
@@ -818,10 +838,11 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pbAgregaIconPC;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.OpenFileDialog ofdIcono;
     }
 }

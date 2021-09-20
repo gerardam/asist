@@ -19,6 +19,7 @@ namespace SisAsis.Datos
         {
             InsertarUsuario = 1,
             MostrarUsuarios = 2,
+            ObtenerIdUsuario = 3
         }
         #endregion
 
@@ -60,6 +61,26 @@ namespace SisAsis.Datos
             parametros[0].Value = SPOpcion.MostrarUsuarios;
 
             return EjecutarDTSP("USUARIO_SP", parametros);
+        }
+
+        public int ObtenerIdUsuario(string usuario)
+        {
+            try
+            {
+                SqlParameter[] parametros =
+                {
+                    new SqlParameter("@OpcionSP",       SqlDbType.TinyInt),
+                    new SqlParameter("@Login",          SqlDbType.VarChar),
+                };
+                parametros[0].Value = SPOpcion.ObtenerIdUsuario;
+                parametros[1].Value = usuario;
+
+                return EjecutarIntSP("USUARIO_SP", parametros);
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
         }
     }
 }
