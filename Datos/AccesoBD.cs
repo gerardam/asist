@@ -11,7 +11,7 @@ namespace SisAsis.Datos
     public class AccesoBD
     {
         #region Variables
-        public static string cadenaBD = @"Data source=GAMAW\GAM;Initial Catalog=ASISDB;Persist Security Info=True;User ID=sa; Password=10TENsaiga";
+        public static string cadenaBD = @"Data source=ServerName;Initial Catalog=DBName;Persist Security Info=True;User ID=sa; Password=********";
         public static SqlConnection cnn = new SqlConnection(cadenaBD);
         #endregion
 
